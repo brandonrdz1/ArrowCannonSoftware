@@ -44,6 +44,12 @@ public:
         }
         std::cout << std::endl;
     }
+    static std::string difference(Entity* pow, Entity* pro) {
+        return ("dx: " + std::to_string(pro->x - pow->x) + " dy: " + std::to_string((pro->y + pro->getExplosionHeight()) - (pow->y+pow->getExplosionHeight())) + " dz: " + std::to_string(pro->z - pow->z));
+    }
+    double distance(Entity* a, Entity* b) {
+        return sqrt((a->x - b->x) * (a->x - b->x) + (a->y - b->y) * (a->y - b->y) + (a->z - b->z) * (a->z - b->z));
+    }
     virtual double* gainArray(Entity* powers, const int size, const double fraction = 1.0, const direction dir = direction::yDir) = 0;
     virtual void explosion(Entity* explosionSource, double exposure = 1.0) = 0;
     virtual void freefall(unsigned short int ticks) = 0;
